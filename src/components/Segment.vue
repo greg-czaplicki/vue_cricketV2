@@ -1,20 +1,23 @@
 <template>
   <div class="segment-container">
-    <h1>{{ $store.state.player1.twenty }}</h1>
-    <v-btn button color="grey lighten-2" id="number" @click="scoreTwenty">20</v-btn>
-    <h1>{{ $store.state.player2.twenty }}</h1>
+    <h1>{{ player1Score.twenty }}</h1>
+    <v-btn button color="grey lighten-2" id="number" @click="scoreSegment({segment: 'twenty', points: 20})">20</v-btn>
+    <h1>{{ player2Score.twenty }}</h1>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   data() {
     return {};
   },
+  computed: {
+    ...mapGetters(['player1Score', 'player2Score'])
+  },
   methods: {
-    ...mapActions(['scoreTwenty'])
+    ...mapActions(['scoreSegment'])
   }
 };
 </script>

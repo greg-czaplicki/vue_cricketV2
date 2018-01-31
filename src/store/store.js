@@ -40,6 +40,14 @@ export const store = new Vuex.Store({
       bull: 0
     }
   },
+  getters: {
+    player1Score(state) {
+      return state.player1;
+    },
+    player2Score(state) {
+      return state.player2;
+    }
+  },
   mutations: {
     emptyState() {
       this.replaceState({
@@ -91,13 +99,13 @@ export const store = new Vuex.Store({
         state.player1.isActive = false;
       }
     },
-    scoreTwenty(state) {
+    scoreSegment(state, payload) {
       if (state.player1.isActive) {
-        state.player1.twenty += 20;
+        state.player1[payload.segment] += payload.points;
       }
 
       if (state.player2.isActive) {
-        state.player2.twenty += 20;
+        state.player2[payload.segment] += payload.points;
       }
     }
   },
@@ -108,8 +116,8 @@ export const store = new Vuex.Store({
     togglePlayer2(context) {
       context.commit('togglePlayer2');
     },
-    scoreTwenty(context) {
-      context.commit('scoreTwenty');
+    scoreSegment(context, payload) {
+      context.commit('scoreSegment', payload);
     }
   }
 });

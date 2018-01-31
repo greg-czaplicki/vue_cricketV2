@@ -12,13 +12,6 @@
   <div id="scoreWrapper">
     <player-names></player-names>
     <segment></segment>
-    <segment></segment>
-    <segment></segment>
-    <segment></segment>
-    <segment></segment>
-    <segment></segment>
-    <segment></segment>
-    <segment></segment>
   </div>
 </div>
 </template>
