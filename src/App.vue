@@ -18,9 +18,8 @@
     <segment segment="sixteen" points=16></segment>
     <segment segment="fifteen" points=15></segment>
     <segment segment="bull" points=25 name="bull"></segment>
-    p1 score - {{ $store.state.player1.totalScore }}
-    <br>
-    p2 score - {{ $store.state.player2.totalScore }}
+    <hr>
+    <Scores></Scores>
   </div>
 </div>
 </template>
@@ -28,13 +27,15 @@
 <script>
 import PlayerNames from './components/PlayerNames';
 import Segment from './components/Segment';
+import Scores from './components/Scores';
 
 import { mapActions } from 'vuex';
 
 export default {
   components: {
     PlayerNames: PlayerNames,
-    Segment: Segment
+    Segment: Segment,
+    Scores: Scores
   },
   name: 'app',
   data() {
@@ -51,6 +52,13 @@ body {
   color: #2c3e50;
 }
 
+hr {
+  border: none;
+  height: 4px;
+  background-color: #2c3e50;
+  margin-top: 15px;
+}
+
 #appHeader {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -63,7 +71,7 @@ body {
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(8, 1fr) 1.5fr;
+  grid-template-rows: repeat(8, 1fr) 0.1fr 1.5fr;
   height: 85vh;
 }
 
