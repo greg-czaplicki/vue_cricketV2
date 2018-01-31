@@ -18,12 +18,9 @@
     <segment segment="sixteen" points=16></segment>
     <segment segment="fifteen" points=15></segment>
     <segment segment="bull" points=25 name="bull"></segment>
-    p1 - {{ $store.state.player1.totalScore }}
-    closed = {{ $store.state.player1.closed.twenty }}
+    p1 score - {{ $store.state.player1.totalScore }}
     <br>
-    p2 - {{ $store.state.player2.totalScore }}
-    closed = {{ $store.state.player2.closed.twenty }}
-    <!-- {{ $store.state.player1.totalScore }} -->
+    p2 score - {{ $store.state.player2.totalScore }}
   </div>
 </div>
 </template>

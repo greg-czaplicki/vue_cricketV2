@@ -82,9 +82,16 @@ export const store = new Vuex.Store({
           isActive: true,
           roundScore: 0,
           totalScore: 0,
-          totalDartsThrown: 0,
-          currentDartsThrown: 0,
           pointsPerMark: 0,
+          closed: {
+            twenty: 0,
+            nineteen: 0,
+            eighteen: 0,
+            seventeen: 0,
+            sixteen: 0,
+            fifteen: 0,
+            bull: 0
+          },
           segments: {
             twenty: 0,
             nineteen: 0,
@@ -100,9 +107,16 @@ export const store = new Vuex.Store({
           isActive: false,
           roundScore: 0,
           totalScore: 0,
-          totalDartsThrown: 0,
-          currentDartsThrown: 0,
           pointsPerMark: 0,
+          closed: {
+            twenty: 0,
+            nineteen: 0,
+            eighteen: 0,
+            seventeen: 0,
+            sixteen: 0,
+            fifteen: 0,
+            bull: 0
+          },
           segments: {
             twenty: 0,
             nineteen: 0,
