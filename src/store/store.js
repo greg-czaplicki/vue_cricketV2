@@ -64,6 +64,12 @@ export const store = new Vuex.Store({
     },
     player2Score(state) {
       return state.player2.segments;
+    },
+    player1Closed(state) {
+      return state.player1.closed;
+    },
+    player2Closed(state) {
+      return state.player2.closed;
     }
   },
   mutations: {
@@ -128,6 +134,7 @@ export const store = new Vuex.Store({
         state.player1.closed[payload.segment] === 3
       ) {
         state.player1.totalScore += payload.points;
+        state.player1.segments[payload.segment] += payload.points;
       } else if (state.player1.isActive && state.player1.closed[payload.segment] < 3) {
         state.player1.closed[payload.segment] += 1;
       }
@@ -138,6 +145,7 @@ export const store = new Vuex.Store({
         state.player2.closed[payload.segment] === 3
       ) {
         state.player2.totalScore += payload.points;
+        state.player2.segments[payload.segment] += payload.points;
       } else if (state.player2.isActive && state.player2.closed[payload.segment] < 3) {
         state.player2.closed[payload.segment] += 1;
       }
