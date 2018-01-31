@@ -1,16 +1,22 @@
 <template>
   <div id="app">
+    <h2 @click="undo">undo</h2>
     <h1 id="title">{{ $store.state.title }}</h1>
     <player-names></player-names>
+    <segment></segment>
   </div>
 </template>
 
 <script>
 import PlayerNames from './components/PlayerNames';
+import Segment from './components/Segment';
+
+import { mapActions } from 'vuex';
 
 export default {
   components: {
-    PlayerNames: PlayerNames
+    PlayerNames: PlayerNames,
+    Segment: Segment
   },
   name: 'app',
   data() {
@@ -20,6 +26,10 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  padding: 10px;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,12 +38,12 @@ export default {
   color: #2c3e50;
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 40px 40px;
   grid-auto-rows: 80px;
 }
 
 #title {
   justify-self: center;
-  align-self: end;
   margin: 0;
 }
 

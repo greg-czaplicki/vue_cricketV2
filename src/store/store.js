@@ -41,6 +41,44 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
+    emptyState() {
+      this.replaceState({
+        title: 'Cricket Scorer',
+        gameInProgess: true,
+        player1: {
+          name: 'Player_1',
+          isActive: true,
+          roundScore: 0,
+          totalScore: 0,
+          totalDartsThrown: 0,
+          currentDartsThrown: 0,
+          pointsPerMark: 0,
+          twenty: 0,
+          nineteen: 0,
+          eighteen: 0,
+          seventeen: 0,
+          sixteen: 0,
+          fifteen: 0,
+          bull: 0
+        },
+        player2: {
+          name: 'Player_2',
+          isActive: false,
+          roundScore: 0,
+          totalScore: 0,
+          totalDartsThrown: 0,
+          currentDartsThrown: 0,
+          pointsPerMark: 0,
+          twenty: 0,
+          nineteen: 0,
+          eighteen: 0,
+          seventeen: 0,
+          sixteen: 0,
+          fifteen: 0,
+          bull: 0
+        }
+      });
+    },
     togglePlayer1(state) {
       if (state.player1.isActive === false) {
         state.player1.isActive = true;
@@ -52,6 +90,15 @@ export const store = new Vuex.Store({
         state.player2.isActive = true;
         state.player1.isActive = false;
       }
+    },
+    scoreTwenty(state) {
+      if (state.player1.isActive) {
+        state.player1.twenty += 20;
+      }
+
+      if (state.player2.isActive) {
+        state.player2.twenty += 20;
+      }
     }
   },
   actions: {
@@ -60,6 +107,9 @@ export const store = new Vuex.Store({
     },
     togglePlayer2(context) {
       context.commit('togglePlayer2');
+    },
+    scoreTwenty(context) {
+      context.commit('scoreTwenty');
     }
   }
 });
