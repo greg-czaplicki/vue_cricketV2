@@ -9,8 +9,15 @@
       <v-icon dark>redo</v-icon>
     </v-btn>
   </div>
-  <div class="scoreWrapper">
+  <div id="scoreWrapper">
     <player-names></player-names>
+    <segment></segment>
+    <segment></segment>
+    <segment></segment>
+    <segment></segment>
+    <segment></segment>
+    <segment></segment>
+    <segment></segment>
     <segment></segment>
   </div>
 </div>
@@ -36,7 +43,6 @@ export default {
 
 <style lang="scss">
 body {
-  padding: 10px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -46,14 +52,17 @@ body {
 #appHeader {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 70px;
-  padding-bottom: 10px;
+  grid-template-rows: 90px;
+  background-color: #155ea3;
+  color: rgb(243, 243, 243);
+  box-shadow: 0 1px 10px rgb(0, 0, 0);
 }
 #scoreWrapper {
+  padding: 10px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 40px;
-  // grid-auto-rows: 60px;
+  grid-template-rows: repeat(8, 1fr) 1.5fr;
+  height: 85vh;
 }
 
 #title {
@@ -64,6 +73,8 @@ body {
 
 .fab-button {
   justify-self: center;
+  align-self: center;
+  color: #155ea3;
 }
 
 h1,

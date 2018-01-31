@@ -44,8 +44,8 @@ h2 {
 }
 
 .isActive {
-  background-color: #baffe0;
-  border: 1px solid rgb(91, 182, 131);
+  background-color: #69f0ae;
+  padding: 4px;
   border-radius: 3px;
 }
 </style>
