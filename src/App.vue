@@ -11,7 +11,19 @@
   </div>
   <div id="scoreWrapper">
     <player-names></player-names>
-    <segment></segment>
+    <segment segment="twenty" points=20></segment>
+    <segment segment="nineteen" points=19></segment>
+    <segment segment="eighteen" points=18></segment>
+    <segment segment="seventeen" points=17></segment>
+    <segment segment="sixteen" points=16></segment>
+    <segment segment="fifteen" points=15></segment>
+    <segment segment="bull" points=25 name="bull"></segment>
+    p1 - {{ $store.state.player1.totalScore }}
+    closed = {{ $store.state.player1.closed.twenty }}
+    <br>
+    p2 - {{ $store.state.player2.totalScore }}
+    closed = {{ $store.state.player2.closed.twenty }}
+    <!-- {{ $store.state.player1.totalScore }} -->
   </div>
 </div>
 </template>

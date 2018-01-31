@@ -12,40 +12,58 @@ export const store = new Vuex.Store({
       isActive: true,
       roundScore: 0,
       totalScore: 0,
-      totalDartsThrown: 0,
-      currentDartsThrown: 0,
       pointsPerMark: 0,
-      twenty: 0,
-      nineteen: 0,
-      eighteen: 0,
-      seventeen: 0,
-      sixteen: 0,
-      fifteen: 0,
-      bull: 0
+      closed: {
+        twenty: 0,
+        nineteen: 0,
+        eighteen: 0,
+        seventeen: 0,
+        sixteen: 0,
+        fifteen: 0,
+        bull: 0
+      },
+      segments: {
+        twenty: 0,
+        nineteen: 0,
+        eighteen: 0,
+        seventeen: 0,
+        sixteen: 0,
+        fifteen: 0,
+        bull: 0
+      }
     },
     player2: {
       name: 'Player_2',
       isActive: false,
       roundScore: 0,
       totalScore: 0,
-      totalDartsThrown: 0,
-      currentDartsThrown: 0,
       pointsPerMark: 0,
-      twenty: 0,
-      nineteen: 0,
-      eighteen: 0,
-      seventeen: 0,
-      sixteen: 0,
-      fifteen: 0,
-      bull: 0
+      closed: {
+        twenty: 0,
+        nineteen: 0,
+        eighteen: 0,
+        seventeen: 0,
+        sixteen: 0,
+        fifteen: 0,
+        bull: 0
+      },
+      segments: {
+        twenty: 0,
+        nineteen: 0,
+        eighteen: 0,
+        seventeen: 0,
+        sixteen: 0,
+        fifteen: 0,
+        bull: 0
+      }
     }
   },
   getters: {
     player1Score(state) {
-      return state.player1;
+      return state.player1.segments;
     },
     player2Score(state) {
-      return state.player2;
+      return state.player2.segments;
     }
   },
   mutations: {
@@ -61,13 +79,15 @@ export const store = new Vuex.Store({
           totalDartsThrown: 0,
           currentDartsThrown: 0,
           pointsPerMark: 0,
-          twenty: 0,
-          nineteen: 0,
-          eighteen: 0,
-          seventeen: 0,
-          sixteen: 0,
-          fifteen: 0,
-          bull: 0
+          segments: {
+            twenty: 0,
+            nineteen: 0,
+            eighteen: 0,
+            seventeen: 0,
+            sixteen: 0,
+            fifteen: 0,
+            bull: 0
+          }
         },
         player2: {
           name: 'Player_2',
@@ -77,13 +97,15 @@ export const store = new Vuex.Store({
           totalDartsThrown: 0,
           currentDartsThrown: 0,
           pointsPerMark: 0,
-          twenty: 0,
-          nineteen: 0,
-          eighteen: 0,
-          seventeen: 0,
-          sixteen: 0,
-          fifteen: 0,
-          bull: 0
+          segments: {
+            twenty: 0,
+            nineteen: 0,
+            eighteen: 0,
+            seventeen: 0,
+            sixteen: 0,
+            fifteen: 0,
+            bull: 0
+          }
         }
       });
     },
@@ -100,12 +122,24 @@ export const store = new Vuex.Store({
       }
     },
     scoreSegment(state, payload) {
-      if (state.player1.isActive) {
-        state.player1[payload.segment] += payload.points;
+      if (
+        state.player1.isActive &&
+        state.player2.closed[payload.segment] < 3 &&
+        state.player1.closed[payload.segment] === 3
+      ) {
+        state.player1.totalScore += payload.points;
+      } else if (state.player1.isActive && state.player1.closed[payload.segment] < 3) {
+        state.player1.closed[payload.segment] += 1;
       }
 
-      if (state.player2.isActive) {
-        state.player2[payload.segment] += payload.points;
+      if (
+        state.player2.isActive &&
+        state.player1.closed[payload.segment] < 3 &&
+        state.player2.closed[payload.segment] === 3
+      ) {
+        state.player2.totalScore += payload.points;
+      } else if (state.player2.isActive && state.player2.closed[payload.segment] < 3) {
+        state.player2.closed[payload.segment] += 1;
       }
     }
   },
