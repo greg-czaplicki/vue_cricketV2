@@ -9,7 +9,7 @@
       <v-icon dark>redo</v-icon>
     </v-btn>
   </div>
-  <div id="scoreWrapper">
+  <div id="scoreWrapper" :class="{disabled: !$store.state.gameInProgress}">
     <player-names></player-names>
     <segment segment="twenty" points=20></segment>
     <segment segment="nineteen" points=19></segment>
@@ -29,7 +29,7 @@ import PlayerNames from './components/PlayerNames';
 import Segment from './components/Segment';
 import Scores from './components/Scores';
 
-import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -40,6 +40,9 @@ export default {
   name: 'app',
   data() {
     return {};
+  },
+  computed: {
+    ...mapGetters(['checkWinner'])
   }
 };
 </script>
@@ -85,6 +88,10 @@ hr {
   justify-self: center;
   align-self: center;
   color: #155ea3;
+}
+
+.disabled {
+  pointer-events: none;
 }
 
 h1,

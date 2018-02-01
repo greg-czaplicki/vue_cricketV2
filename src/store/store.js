@@ -10,10 +10,7 @@ export const store = new Vuex.Store({
     player1: {
       name: 'Player_1',
       isActive: true,
-      roundScore: 0,
       totalScore: 0,
-      pointsPerMark: 0,
-      allClosed: false,
       closed: {
         twenty: 0,
         nineteen: 0,
@@ -36,10 +33,7 @@ export const store = new Vuex.Store({
     player2: {
       name: 'Player_2',
       isActive: false,
-      roundScore: 0,
       totalScore: 0,
-      pointsPerMark: 0,
-      allClosed: false,
       closed: {
         twenty: 0,
         nineteen: 0,
@@ -80,6 +74,7 @@ export const store = new Vuex.Store({
       let p2allTrue = Object.keys(state.player2.closed).every(function(k) {
         return state.player2.closed[k] === 3;
       });
+
       if (
         (p1allTrue && state.player2.totalScore === 0) ||
         (p1allTrue && state.player1.totalScore >= state.player2.totalScore)
@@ -87,6 +82,7 @@ export const store = new Vuex.Store({
         state.gameInProgress = false;
         alert('Player 1 Wins!');
       }
+
       if (
         (p2allTrue && state.player1.totalScore === 0) ||
         (p2allTrue && state.player2.totalScore >= state.player1.totalScore)
@@ -104,9 +100,7 @@ export const store = new Vuex.Store({
         player1: {
           name: 'Player_1',
           isActive: true,
-          roundScore: 0,
           totalScore: 0,
-          pointsPerMark: 0,
           closed: {
             twenty: 0,
             nineteen: 0,
@@ -129,9 +123,7 @@ export const store = new Vuex.Store({
         player2: {
           name: 'Player_2',
           isActive: false,
-          roundScore: 0,
           totalScore: 0,
-          pointsPerMark: 0,
           closed: {
             twenty: 0,
             nineteen: 0,
@@ -167,26 +159,24 @@ export const store = new Vuex.Store({
     },
     scoreSegment(state, payload) {
       if (
-        state.gameInProgress === true &&
         state.player1.isActive &&
         state.player2.closed[payload.segment] < 3 &&
         state.player1.closed[payload.segment] === 3
       ) {
         state.player1.totalScore += payload.points;
         state.player1.segments[payload.segment] += payload.points;
-      } else if (state.gameInProgress === true && state.player1.isActive && state.player1.closed[payload.segment] < 3) {
+      } else if (state.player1.isActive && state.player1.closed[payload.segment] < 3) {
         state.player1.closed[payload.segment] += 1;
       }
 
       if (
-        state.gameInProgress === true &&
         state.player2.isActive &&
         state.player1.closed[payload.segment] < 3 &&
         state.player2.closed[payload.segment] === 3
       ) {
         state.player2.totalScore += payload.points;
         state.player2.segments[payload.segment] += payload.points;
-      } else if (state.gameInProgress === true && state.player2.isActive && state.player2.closed[payload.segment] < 3) {
+      } else if (state.player2.isActive && state.player2.closed[payload.segment] < 3) {
         state.player2.closed[payload.segment] += 1;
       }
     }

@@ -6,10 +6,10 @@
       <img v-else-if="player1Closed[segment] === 1" src="../assets/slash.png" style="height: 20px; width: 20px;">
       <img v-else-if="player1Closed[segment] === 2" src="../assets/x.png" style="height: 20px; width: 20px;">
       <img v-else-if="player1Closed[segment] === 3 && player1Score[segment] === 0" src="../assets/circlex.png" style="height: 30px; width: 30px;">
-      <h1 v-else style="font-weight: bold;">{{ player1Score[segment] }}</h1>
+      <h1 v-else style="font-weight: bold">{{ player1Score[segment] }}</h1>
     </div>
 
-    <v-btn button color="grey lighten-2" id="number" @click="scoreSegment({segment: segment, points: parseInt(points)})" :class="{closed: closed(segment)}" >
+    <v-btn button color="grey lighten-2" id="number" @click="scoreSegment({segment: segment, points: parseInt(points)}), checkWinner" :class="{closed: closed(segment)}" >
       <span v-if="points && !name">{{ points }}</span>
       <span id="bull" v-if="name">{{ name }}</span>
     </v-btn>
@@ -106,7 +106,7 @@ img {
   border-radius: 3px;
 
   img {
-    filter: opacity(50%);;
+    filter: opacity(50%);
   }
 }
 
