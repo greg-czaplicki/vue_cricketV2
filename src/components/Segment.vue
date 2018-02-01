@@ -6,7 +6,7 @@
       <img v-else-if="player1Closed[segment] === 1" src="../assets/slash.png" style="height: 20px; width: 20px;">
       <img v-else-if="player1Closed[segment] === 2" src="../assets/x.png" style="height: 20px; width: 20px;">
       <img v-else-if="player1Closed[segment] === 3 && player1Score[segment] === 0" src="../assets/circlex.png" style="height: 30px; width: 30px;">
-      <h1 v-else style="font-weight: bold">{{ player1Score[segment] }}</h1>
+      <h1 v-else style="font-weight: 500">{{ player1Score[segment] }}</h1>
     </div>
 
     <v-btn button color="grey lighten-2" id="number" @click="scoreSegment({segment: segment, points: parseInt(points)}), checkWinner" :class="{closed: closed(segment)}" >
@@ -19,7 +19,7 @@
       <img v-else-if="player2Closed[segment] === 1" src="../assets/slash.png" style="height: 20px; width: 20px;">
       <img v-else-if="player2Closed[segment] === 2" src="../assets/x.png" style="height: 20px; width: 20px;">
       <img v-else-if="player2Closed[segment] === 3 && player2Score[segment] === 0" src="../assets/circlex.png" style="height: 30px; width: 30px;">
-      <h1 v-else style="font-weight: bold">{{ player2Score[segment] }}</h1>
+      <h1 v-else style="font-weight: 500">{{ player2Score[segment] }}</h1>
     </div>
   
   </div>

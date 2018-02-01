@@ -48,4 +48,8 @@ h2 {
   padding: 4px;
   border-radius: 3px;
 }
+
+#vs {
+  font-size: 30px;
+}
 </style>

@@ -74,7 +74,7 @@ hr {
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(8, 1fr) 0.1fr 1.5fr;
+  grid-template-rows: repeat(8, 1fr) 0.1fr 1fr;
   height: 85vh;
 }
 
