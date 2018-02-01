@@ -9,7 +9,7 @@
       <h1 v-else style="font-weight: bold">{{ player1Score[segment] }}</h1>
     </div>
 
-    <v-btn button color="grey lighten-2" id="number" @click="scoreSegment({segment: segment, points: parseInt(points)})" >
+    <v-btn button color="grey lighten-2" id="number" @click="scoreSegment({segment: segment, points: parseInt(points)}), checkWinner" >
       <span v-if="points && !name">{{ points }}</span>
       <span id="bull" v-if="name">{{ name }}</span>
     </v-btn>
@@ -34,7 +34,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(['player1Score', 'player2Score', 'player1Closed', 'player2Closed'])
+    ...mapGetters(['player1Score', 'player2Score', 'player1Closed', 'player2Closed', 'checkWinner'])
   },
   methods: {
     ...mapActions(['scoreSegment'])

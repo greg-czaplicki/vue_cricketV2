@@ -20,6 +20,7 @@
     <segment segment="bull" points=25 name="bull"></segment>
     <hr>
     <Scores></Scores>
+    {{ $store.state.player1.allClosed }}
   </div>
 </div>
 </template>
@@ -104,5 +105,17 @@ li {
 
 a {
   color: #42b983;
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  /* Styles */
+  #scoreWrapper {
+    margin: 0 300px;
+  }
+
+  #appHeader {
+    padding: 0 380px;
+  }
 }
 </style>

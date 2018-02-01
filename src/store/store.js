@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
       roundScore: 0,
       totalScore: 0,
       pointsPerMark: 0,
+      allClosed: false,
       closed: {
         twenty: 0,
         nineteen: 0,
@@ -38,6 +39,7 @@ export const store = new Vuex.Store({
       roundScore: 0,
       totalScore: 0,
       pointsPerMark: 0,
+      allClosed: false,
       closed: {
         twenty: 0,
         nineteen: 0,
@@ -70,6 +72,26 @@ export const store = new Vuex.Store({
     },
     player2Closed(state) {
       return state.player2.closed;
+    },
+    checkWinner(state) {
+      let p1allTrue = Object.keys(state.player1.closed).every(function(k) {
+        return state.player1.closed[k] === 3;
+      });
+      let p2allTrue = Object.keys(state.player2.closed).every(function(k) {
+        return state.player2.closed[k] === 3;
+      });
+      if (
+        (p1allTrue && state.player2.totalScore === 0) ||
+        (p1allTrue && state.player1.totalScore >= state.player2.totalScore)
+      ) {
+        alert('Player 1 Wins!');
+      }
+      if (
+        (p2allTrue && state.player1.totalScore === 0) ||
+        (p2allTrue && state.player2.totalScore >= state.player1.totalScore)
+      ) {
+        alert('Player 2 Wins!');
+      }
     }
   },
   mutations: {
