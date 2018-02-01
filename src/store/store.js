@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
     title: 'Cricket Scorer',
     gameInProgress: true,
     player1: {
-      name: 'Player_1',
+      name: 'Player 1',
       isActive: true,
       totalScore: 0,
       closed: {
@@ -31,7 +31,7 @@ export const store = new Vuex.Store({
       }
     },
     player2: {
-      name: 'Player_2',
+      name: 'Player 2',
       isActive: false,
       totalScore: 0,
       closed: {

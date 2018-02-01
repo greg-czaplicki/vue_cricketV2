@@ -2,7 +2,7 @@
   <div class="segment-container">
 
     <div :class="{open: openSegmentP1(segment), warn: warnSegmentP1(segment), closed: closed(segment)}" style="height: 40px;display: grid;">
-      <h1 v-if="player1Closed[segment] === 0">-</h1>
+      <h1 v-if="player1Closed[segment] === 0" style="color: lightgray">-</h1>
       <img v-else-if="player1Closed[segment] === 1" src="../assets/slash.png" style="height: 20px; width: 20px;">
       <img v-else-if="player1Closed[segment] === 2" src="../assets/x.png" style="height: 20px; width: 20px;">
       <img v-else-if="player1Closed[segment] === 3 && player1Score[segment] === 0" src="../assets/circlex.png" style="height: 30px; width: 30px;">
@@ -15,7 +15,7 @@
     </v-btn>
 
     <div :class="{open: openSegmentP2(segment), warn: warnSegmentP2(segment), closed: closed(segment)}" style="height: 40px;display: grid;">
-      <h1 v-if="player2Closed[segment] === 0">-</h1>
+      <h1 v-if="player2Closed[segment] === 0" style="color: lightgray">-</h1>
       <img v-else-if="player2Closed[segment] === 1" src="../assets/slash.png" style="height: 20px; width: 20px;">
       <img v-else-if="player2Closed[segment] === 2" src="../assets/x.png" style="height: 20px; width: 20px;">
       <img v-else-if="player2Closed[segment] === 3 && player2Score[segment] === 0" src="../assets/circlex.png" style="height: 30px; width: 30px;">

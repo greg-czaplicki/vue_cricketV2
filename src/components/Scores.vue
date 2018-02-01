@@ -18,7 +18,7 @@ h1 {
   padding: 0;
   margin: 0;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .scoreWrapper {

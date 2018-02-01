@@ -52,13 +52,13 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #35495d;
 }
 
 hr {
   border: none;
-  height: 4px;
-  background-color: #2c3e50;
+  height: 3px;
+  background-color: #35495d;
   margin-top: 15px;
 }
 
@@ -66,7 +66,7 @@ hr {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 90px;
-  background-color: #155ea3;
+  background-color: #35495d;
   color: rgb(243, 243, 243);
   box-shadow: 0 1px 10px rgb(0, 0, 0);
 }
@@ -87,7 +87,7 @@ hr {
 .fab-button {
   justify-self: center;
   align-self: center;
-  color: #155ea3;
+  color: #35495d;
 }
 
 h1,
