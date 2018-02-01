@@ -9,7 +9,7 @@
       <v-icon dark>redo</v-icon>
     </v-btn>
   </div>
-  <div id="scoreWrapper" :class="{disabled: !$store.state.gameInProgress}">
+  <div id="scoreWrapper">
     <player-names></player-names>
     <segment segment="twenty" points=20></segment>
     <segment segment="nineteen" points=19></segment>
@@ -88,10 +88,6 @@ hr {
   justify-self: center;
   align-self: center;
   color: #155ea3;
-}
-
-.disabled {
-  pointer-events: none;
 }
 
 h1,
