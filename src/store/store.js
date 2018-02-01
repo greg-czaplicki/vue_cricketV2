@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     title: 'Cricket Scorer',
-    gameInProgess: true,
+    gameInProgress: true,
     player1: {
       name: 'Player_1',
       isActive: true,
@@ -84,12 +84,14 @@ export const store = new Vuex.Store({
         (p1allTrue && state.player2.totalScore === 0) ||
         (p1allTrue && state.player1.totalScore >= state.player2.totalScore)
       ) {
+        state.gameInProgress = false;
         alert('Player 1 Wins!');
       }
       if (
         (p2allTrue && state.player1.totalScore === 0) ||
         (p2allTrue && state.player2.totalScore >= state.player1.totalScore)
       ) {
+        state.gameInProgress = false;
         alert('Player 2 Wins!');
       }
     }
@@ -165,24 +167,26 @@ export const store = new Vuex.Store({
     },
     scoreSegment(state, payload) {
       if (
+        state.gameInProgress === true &&
         state.player1.isActive &&
         state.player2.closed[payload.segment] < 3 &&
         state.player1.closed[payload.segment] === 3
       ) {
         state.player1.totalScore += payload.points;
         state.player1.segments[payload.segment] += payload.points;
-      } else if (state.player1.isActive && state.player1.closed[payload.segment] < 3) {
+      } else if (state.gameInProgress === true && state.player1.isActive && state.player1.closed[payload.segment] < 3) {
         state.player1.closed[payload.segment] += 1;
       }
 
       if (
+        state.gameInProgress === true &&
         state.player2.isActive &&
         state.player1.closed[payload.segment] < 3 &&
         state.player2.closed[payload.segment] === 3
       ) {
         state.player2.totalScore += payload.points;
         state.player2.segments[payload.segment] += payload.points;
-      } else if (state.player2.isActive && state.player2.closed[payload.segment] < 3) {
+      } else if (state.gameInProgress === true && state.player2.isActive && state.player2.closed[payload.segment] < 3) {
         state.player2.closed[payload.segment] += 1;
       }
     }
@@ -196,6 +200,9 @@ export const store = new Vuex.Store({
     },
     scoreSegment(context, payload) {
       context.commit('scoreSegment', payload);
+    },
+    segmentOpen(context, payload) {
+      context.commit('segmentOpen', payload);
     }
   }
 });

@@ -20,7 +20,6 @@
     <segment segment="bull" points=25 name="bull"></segment>
     <hr>
     <Scores></Scores>
-    {{ $store.state.player1.allClosed }}
   </div>
 </div>
 </template>
