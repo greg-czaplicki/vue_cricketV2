@@ -3,10 +3,10 @@
 
     <div :class="{open: openSegmentP1(segment), warn: warnSegmentP1(segment), closed: closed(segment)}" style="height: 40px;display: grid;">
       <h1 v-if="player1Closed[segment] === 0" style="color: lightgray">-</h1>
-      <img v-else-if="player1Closed[segment] === 1" src="../assets/slash.png" style="height: 20px; width: 20px;">
-      <img v-else-if="player1Closed[segment] === 2" src="../assets/x.png" style="height: 20px; width: 20px;">
-      <img v-else-if="player1Closed[segment] === 3 && player1Score[segment] === 0" src="../assets/circlex.png" style="height: 30px; width: 30px;">
-      <h1 v-else style="font-weight: 500">{{ player1Score[segment] }}</h1>
+      <img v-show="player1Closed[segment] === 1" :src="slash">
+      <img v-show="player1Closed[segment] === 2" :src="x">
+      <img v-show="player1Closed[segment] === 3 && player1Score[segment] === 0" :src="circlex">
+      <h1 v-show="player1Score[segment] > 0">{{ player1Score[segment] }}</h1>
     </div>
 
     <v-btn button color="grey lighten-2" id="number" @click="scoreSegment({segment: segment, points: parseInt(points)}), checkWinner" :class="{closed: closed(segment)}" >
@@ -16,10 +16,10 @@
 
     <div :class="{open: openSegmentP2(segment), warn: warnSegmentP2(segment), closed: closed(segment)}" style="height: 40px;display: grid;">
       <h1 v-if="player2Closed[segment] === 0" style="color: lightgray">-</h1>
-      <img v-else-if="player2Closed[segment] === 1" src="../assets/slash.png" style="height: 20px; width: 20px;">
-      <img v-else-if="player2Closed[segment] === 2" src="../assets/x.png" style="height: 20px; width: 20px;">
-      <img v-else-if="player2Closed[segment] === 3 && player2Score[segment] === 0" src="../assets/circlex.png" style="height: 30px; width: 30px;">
-      <h1 v-else style="font-weight: 500">{{ player2Score[segment] }}</h1>
+      <img v-show="player2Closed[segment] === 1" :src="slash">
+      <img v-show="player2Closed[segment] === 2" :src="x">
+      <img v-show="player2Closed[segment] === 3 && player2Score[segment] === 0" :src="circlex">
+      <h1 v-show="player2Score[segment] > 0">{{ player2Score[segment] }}</h1>
     </div>
   
   </div>
@@ -34,7 +34,16 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(['player1Score', 'player2Score', 'player1Closed', 'player2Closed', 'checkWinner'])
+    ...mapGetters([
+      'player1Score',
+      'player2Score',
+      'player1Closed',
+      'player2Closed',
+      'checkWinner',
+      'slash',
+      'x',
+      'circlex'
+    ])
   },
   methods: {
     ...mapActions(['scoreSegment']),

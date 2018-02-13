@@ -7,6 +7,9 @@ export const store = new Vuex.Store({
   state: {
     title: 'Cricket Scorer',
     gameInProgress: true,
+    slash: '/dist/slash.png',
+    x: '/dist/x.png',
+    circlex: '/dist/circlex.png',
     player1: {
       name: 'Player 1',
       isActive: true,
@@ -55,6 +58,15 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
+    slash(state) {
+      return state.slash;
+    },
+    x(state) {
+      return state.x;
+    },
+    circlex(state) {
+      return state.circlex;
+    },
     player1Score(state) {
       return state.player1.segments;
     },
@@ -97,6 +109,9 @@ export const store = new Vuex.Store({
       this.replaceState({
         title: 'Cricket Scorer',
         gameInProgess: true,
+        slash: '/dist/slash.png',
+        x: '/dist/x.png',
+        circlex: '/dist/circlex.png',
         player1: {
           name: 'Player 1',
           isActive: true,
